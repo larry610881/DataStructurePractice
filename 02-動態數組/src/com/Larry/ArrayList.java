@@ -10,7 +10,7 @@ public class ArrayList<E> {
      */
     private E[] elements;
     private static final int DEFAULT_CAPACITY=10;
-    private static final int ELEMENT_NOT_FOUND=1;
+    private static final int ELEMENT_NOT_FOUND=-1;
     /**
      * 清除所有元素
      */

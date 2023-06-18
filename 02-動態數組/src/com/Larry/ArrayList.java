@@ -98,8 +98,8 @@ public class ArrayList<E> {
     public void add(int index,E element){
         rangeCheckForAdd(index);
         ensureCapacity(size+1);
-        for(int i=size-1;i>=index;i--){
-            elements[i+1] =elements[i];
+        for(int i=size;i>index;i--){
+            elements[i] =elements[i-1];
         }
         elements[index]=element;
         size++;
@@ -114,12 +114,20 @@ public class ArrayList<E> {
     public E remove(int index){
         rangeCheck(index);
         E old = elements[index];
-        for (int i =index+1;i<=size-1;i++){
+        for (int i =index+1;i<size;i++){
             elements[i-1] =elements[i];
         }
         //size先減1在清空 清掉最後一個
         elements[--size]=null;
         return  old;
+    }
+
+    /**
+     * 移除特定element
+     * @param element
+     */
+    public  void remove(E element){
+        remove(indexOf(element));
     }
 
     /**

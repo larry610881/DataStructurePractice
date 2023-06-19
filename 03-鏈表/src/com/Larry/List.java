@@ -63,11 +63,6 @@ public interface List<E> {
     E remove(int index);
 
     /**
-     * 移除特定element
-     * @param element
-     */
-    void remove(E element);
-    /**
      * 查看元素的索引
      * @param element
      * @return

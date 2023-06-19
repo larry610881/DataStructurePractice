@@ -11,5 +11,14 @@ public class Main {
 
         list.remove(1);
         System.out.println(list);
+
+        List<Integer> list2 =new LinkList2<>();
+        list2.add(20);
+        list2.add(0,10);
+        list2.add(30);
+        list2.add(list.size(),40);
+
+        list2.remove(1);
+        System.out.println(list2);
     }
 }

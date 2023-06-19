@@ -25,11 +25,21 @@ public class LinkList<E>  extends AbstractList<E>  {
 
     @Override
     public E get(int index) {
+        /**
+         * 最好:O(1)
+         * 最壞:O(n)
+         * 平均:O(n)
+         */
         return node(index).element;
     }
 
     @Override
     public E set(int index, E element) {
+        /**
+         * 最好:O(1)
+         * 最壞:O(n)
+         * 平均:O(n)
+         */
         Node<E> node =node(index);
         E old = node.element;
         node.element = element;
@@ -38,6 +48,11 @@ public class LinkList<E>  extends AbstractList<E>  {
 
     @Override
     public void add(int index, E element) {
+        /**
+         * 最好:O(1)
+         * 最壞:O(n)
+         * 平均:O(n)
+         */
         rangeCheckForAdd(index);
         if (index ==0){
             first = new Node<>(element,first);

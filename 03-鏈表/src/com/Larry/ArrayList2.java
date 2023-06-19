@@ -1,6 +1,9 @@
 package com.Larry;
 @SuppressWarnings("unchecked")
-public class ArrayList<E> extends AbstractList<E>  {
+/**
+ * 有動態縮容
+ */
+public class ArrayList2<E> extends AbstractList<E>  {
 
     /**
      * 所有的元素
@@ -11,11 +14,11 @@ public class ArrayList<E> extends AbstractList<E>  {
     /**
      * 清除所有元素
      */
-    public ArrayList(int capaticy){
+    public ArrayList2(int capaticy){
         capaticy = (capaticy<DEFAULT_CAPACITY)?DEFAULT_CAPACITY:capaticy;
         elements = (E[]) new Object[capaticy];
     }
-    public ArrayList(){
+    public ArrayList2(){
         this(DEFAULT_CAPACITY);
     }
 
@@ -106,6 +109,7 @@ public class ArrayList<E> extends AbstractList<E>  {
         }
         //size先減1在清空 清掉最後一個
         elements[--size]=null;
+        trim();
         return  old;
     }
 
@@ -170,5 +174,20 @@ public class ArrayList<E> extends AbstractList<E>  {
         System.out.println(oldCapacity+"擴容為"+newCapacity);
     }
 
+    /**
+     * 規則:p.s.剩餘空間佔總空間的一半就縮容
+     */
+    private void trim(){
+        int oldCapacity = elements.length;
+        int newCapacity =oldCapacity>>1;
+        if(size>=(newCapacity) || oldCapacity< DEFAULT_CAPACITY) return;
 
+        E[] newElements = (E[]) new Object[newCapacity];
+        for(int i=0 ; i<size;i++){
+            newElements[i]=elements[i];
+        }
+        elements =newElements;
+
+        System.out.println(oldCapacity+"縮容為"+newCapacity);
+    }
 }

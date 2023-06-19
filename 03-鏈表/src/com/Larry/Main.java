@@ -20,5 +20,14 @@ public class Main {
 
         list2.remove(1);
         System.out.println(list2);
+
+        List<Integer> array2 = new ArrayList2<>();
+        for(int i=0;i<50;i++){
+            array2.add(1);
+        }
+        for(int i=0;i<50;i++){
+            array2.remove(0);
+        }
+        System.out.println(array2);
     }
 }

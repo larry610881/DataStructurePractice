@@ -1,13 +1,9 @@
-package com.Larry;
+package com.Larry.Single;
 
-/**
- * 增加一個虛擬頭節點
- */
-public class LinkList2<E>  extends AbstractList<E>  {
+import com.Larry.AbstractList;
+
+public class SingleLinkList<E>  extends AbstractList<E> {
     private Node<E> first;
-    public LinkList2(){
-        first = new Node<>(null,null);
-    }
     private static final int ELEMENT_NOT_FOUND=-1;
     private static class Node<E>{
         E element;
@@ -31,11 +27,21 @@ public class LinkList2<E>  extends AbstractList<E>  {
 
     @Override
     public E get(int index) {
+        /**
+         * 最好:O(1)
+         * 最壞:O(n)
+         * 平均:O(n)
+         */
         return node(index).element;
     }
 
     @Override
     public E set(int index, E element) {
+        /**
+         * 最好:O(1)
+         * 最壞:O(n)
+         * 平均:O(n)
+         */
         Node<E> node =node(index);
         E old = node.element;
         node.element = element;
@@ -44,9 +50,18 @@ public class LinkList2<E>  extends AbstractList<E>  {
 
     @Override
     public void add(int index, E element) {
+        /**
+         * 最好:O(1)
+         * 最壞:O(n)
+         * 平均:O(n)
+         */
         rangeCheckForAdd(index);
-        Node<E> prev =index==0? first: node(index-1);
-        prev.next =new Node<>(element,prev.next);
+        if (index ==0){
+            first = new Node<>(element,first);
+        }else{
+            Node<E> prev = node(index-1);
+            prev.next =new Node<>(element,prev.next);
+        }
         size++;
 
     }
@@ -54,10 +69,14 @@ public class LinkList2<E>  extends AbstractList<E>  {
     @Override
     public E remove(int index) {
         rangeCheck(index);
-
-        Node<E> prev= index==0?first: node(index-1);
-        Node<E> node = prev.next;
-        prev.next =node.next;
+        Node<E> node =first;
+        if(index ==0){
+            first = first.next;
+        }else{
+            Node<E> prev= node(index-1);
+            node = prev.next;
+            prev.next =node.next;
+        }
         size--;
         return node.element;
     }
@@ -90,7 +109,7 @@ public class LinkList2<E>  extends AbstractList<E>  {
     private Node<E> node (int index){
         rangeCheck(index);
 
-        Node<E> node =first.next;
+        Node<E> node =first;
         for(int i =0;i<index;i++){
             node = node.next;
         }
@@ -101,7 +120,7 @@ public class LinkList2<E>  extends AbstractList<E>  {
         //size=3 [99,88,77]
         StringBuffer string = new StringBuffer();
         string.append("size=").append(size).append(",【");
-        Node<E> node = first.next;
+        Node<E> node = first;
         for (int i=0;i<size ;i++){
             if (i!=0){
                 string.append(", ");

@@ -1,7 +1,5 @@
 package com.Larry;
 
-import javax.management.DynamicMBean;
-
 public class Main {
     public static void main(String[] args) {
         ArrayList<Person> person = new ArrayList<>();
@@ -33,11 +31,11 @@ public class Main {
         list.add(list.size(),111);
 
         list.set(3,80);
-        Assert.test(list.get(3)==80);
+        Asserts.test(list.get(3)==80);
 
         list.remove(0);
-        Assert.test(list.get(0)==11);
-        Assert.test(list.size()==4);
+        Asserts.test(list.get(0)==11);
+        Asserts.test(list.size()==4);
 
         //System.out.println(list)事實上是在做 list的toString 因此我們override toString
         System.out.println(list);

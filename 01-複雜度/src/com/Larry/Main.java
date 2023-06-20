@@ -1,6 +1,6 @@
 package com.Larry;
 
-import com.Larry.TimeTool.Task;
+import com.Larry.Times.Task;
 
 public class Main {
     /*
@@ -25,13 +25,13 @@ public class Main {
     }
     public static void main(String[] args) {
         int n =45;
-        TimeTool.check("fib1",new Task(){
+        Times.test("fib1",new Task(){
             @Override
             public void execute() {
                 System.out.println(fib1(n));
             }
         });
-        TimeTool.check("fib2",new Task(){
+        Times.test("fib2",new Task(){
             @Override
             public void execute() {
                 System.out.println(fib2(n));

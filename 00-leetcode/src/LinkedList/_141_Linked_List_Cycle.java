@@ -1,4 +1,4 @@
-package linklist;
+package LinkedList;
 
 /**
  *  https://leetcode.com/problems/linked-list-cycle/

@@ -2,7 +2,7 @@ package com.Larry.Single;
 
 import com.Larry.AbstractList;
 
-public class SingleLinkList<E>  extends AbstractList<E> {
+public class SingleLinkedList<E>  extends AbstractList<E> {
     private Node<E> first;
     private static final int ELEMENT_NOT_FOUND=-1;
     private static class Node<E>{

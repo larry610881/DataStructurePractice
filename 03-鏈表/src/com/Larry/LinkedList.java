@@ -1,6 +1,6 @@
 package com.Larry;
 
-public class LinkList<E>  extends AbstractList<E> {
+public class LinkedList<E>  extends AbstractList<E> {
     private Node<E> first;
     private Node<E> last;
     private static final int ELEMENT_NOT_FOUND=-1;

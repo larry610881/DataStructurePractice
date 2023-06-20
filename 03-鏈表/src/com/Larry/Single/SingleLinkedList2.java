@@ -5,9 +5,9 @@ import com.Larry.AbstractList;
 /**
  * 增加一個虛擬頭節點
  */
-public class SingleLinkList2<E>  extends AbstractList<E> {
+public class SingleLinkedList2<E>  extends AbstractList<E> {
     private Node<E> first;
-    public SingleLinkList2(){
+    public SingleLinkedList2(){
         first = new Node<>(null,null);
     }
     private static final int ELEMENT_NOT_FOUND=-1;

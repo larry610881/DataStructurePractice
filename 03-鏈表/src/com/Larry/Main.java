@@ -1,6 +1,8 @@
 package com.Larry;
 
-import com.Larry.Single.SingleLinkList2;
+import com.Larry.Single.SingleLinkedList2;
+import com.Larry.circle.CircleLinkedList;
+import com.Larry.circle.SingleCircleLinkedList;
 
 public class Main {
     static void testList(List<Integer> list){
@@ -26,8 +28,26 @@ public class Main {
         System.out.println(list);
     }
     public static void main(String[] args) {
-        testList(new ArrayList<>());
-        testList(new LinkList<>());
+        josephus();
+//        testList(new ArrayList<>());
+//        testList(new LinkedList<>());
+
+//        testList(new SingleCircleLinkedList<>());
+//            testList(new CircleLinkedList<>());
+
+    }
+    static void  josephus(){
+        CircleLinkedList<Integer> list = new CircleLinkedList<>();
+        for(int i=1;i<=8;i++){
+            list.add(i);
+        }
+        list.reset();
+
+        while (!list.isEmpty()){
+            list.next();
+            list.next();
+            System.out.println(list.remove());
+        }
 
     }
 
@@ -41,7 +61,7 @@ public class Main {
         list.remove(1);
         System.out.println(list);
 
-        List<Integer> list2 =new SingleLinkList2<>();
+        List<Integer> list2 =new SingleLinkedList2<>();
         list2.add(20);
         list2.add(0,10);
         list2.add(30);

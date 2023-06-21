@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/00-leetcode/00-leetcode.iml" filepath="$PROJECT_DIR$/00-leetcode/00-leetcode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01-複雜度/01-複雜度.iml" filepath="$PROJECT_DIR$/01-複雜度/01-複雜度.iml" />
+      <module fileurl="file://$PROJECT_DIR$/02-動態數組/02-動態數組.iml" filepath="$PROJECT_DIR$/02-動態數組/02-動態數組.iml" />
+      <module fileurl="file://$PROJECT_DIR$/03-鏈表/03-鏈表.iml" filepath="$PROJECT_DIR$/03-鏈表/03-鏈表.iml" />
+      <module fileurl="file://$PROJECT_DIR$/04-堆疊/04-堆疊.iml" filepath="$PROJECT_DIR$/04-堆疊/04-堆疊.iml" />
+      <module fileurl="file://$PROJECT_DIR$/05-隊列/05-隊列.iml" filepath="$PROJECT_DIR$/05-隊列/05-隊列.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/LoveDSA.iml" filepath="$PROJECT_DIR$/.idea/LoveDSA.iml" />
+      <module fileurl="file://$PROJECT_DIR$/test/test.iml" filepath="$PROJECT_DIR$/test/test.iml" />
+    </modules>
+  </component>
+</project>

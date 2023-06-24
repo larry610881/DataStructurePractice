@@ -24,7 +24,8 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
         return size==0;
     }
     public void clear(){
-
+        root =null;
+        size=0;
     }
     public void add(E element){
         elementNotNullCheck(element);
@@ -63,10 +64,58 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
         size++;
     }
     public void remove(E element){
+        remove(node(element));
 
     }
+    private void remove(Node<E> node){
+        if(node==null) return;
+        size--;
+        if(node.hasTwoChildren()){
+         Node<E> s = successor(node);
+         node.element = s.element;
+         //刪除度為2實際上要移除內存的節點是前繼或後繼，因此將node指定為前繼或後繼即可
+         node = s;
+        }
+        //只要刪除node就好 能到這node度必為1 or 0
+        Node<E> replacement = node.left!=null? node.left :node.right;
+
+        if(replacement !=null){
+            //更改parent
+            replacement.parent =node.parent;
+            if(node.parent==null){
+                root =replacement;
+            }else if(node ==node.parent.left){
+                node.parent.left =replacement;
+            }
+            else {
+                node.parent.right =replacement;
+            }
+        }else if(node.parent ==null){//node為葉子節點 且是跟節點
+            root =null;
+        }else{
+            if(node == node.parent.left){
+                node.parent.left =null;
+            }else{
+                node.parent.right =null;
+            }
+        }
+
+    }
+    private Node<E> node(E element){
+        Node<E> node =root;
+        while (node!=null){
+            int cmp = compare(element,node.element);
+            if(cmp==0) return  node;
+            if(cmp>0){
+                node =node.right;
+            }else {
+                node =node.left;
+            }
+        }
+        return null;
+    }
     public boolean contains(E element){
-        return false;
+        return node(element)!=null;
     }
 
 //    public void preorderTraversal(){
@@ -168,6 +217,126 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
             }
         }
     }
+    //recursion
+    public int height1(){
+        return height1(root);
+    }
+    public int height1(Node<E> node){
+        if (node==null)return 0;
+        return 1+ Math.max(height1(node.left),height1(node.right));
+    }
+    public int height2(){
+        if(root==null) return 0;
+        int height =0;
+        int levelSize =1;
+
+        Queue<Node<E>> queue = new LinkedList<>();
+        queue.offer(root);
+        while (!queue.isEmpty()){
+            Node<E> node = queue.poll();
+            levelSize--;
+            if(node.left!=null){
+                queue.offer(node.left);
+            }
+            if(node.right!=null){
+                queue.offer(node.right);
+            }
+            if(levelSize==0){//即將反問下一層
+                levelSize =queue.size();
+                height++;
+            }
+
+        }
+        return height;
+    }
+//    public boolean isComplete(){
+//        if(root==null) return false;
+//        Boolean leaf =false;
+//        Queue<Node<E>> queue = new LinkedList<>();
+//        queue.offer(root);
+//        while (!queue.isEmpty()){
+//            Node<E> node =queue.poll();
+//            if(leaf&&!node.isLeaf())return false;
+//            if(node.left!=null&& node.right!=null){
+//                queue.offer(node.left);
+//                queue.offer(node.right);
+//            }else if(node.left==null&&node.right!=null){
+//                return false;
+//            }else {//後面遍歷的都需要是葉子節點
+//                leaf =true;
+//                if(node.left!=null){
+//                    queue.offer(node.left);
+//                }
+//            }
+//        }
+//        return true;
+//    }
+
+    public boolean isComplete() {
+        if(root==null) return false;
+
+        Queue<Node<E>> queue = new LinkedList<>();
+        queue.offer(root);
+        boolean leaf =false;
+        while (!queue.isEmpty()){
+            Node<E> node = queue.poll();
+            if(leaf && !node.isLeaf()) return false;
+
+            if(node.left!=null){
+                queue.offer(node.left);
+            }else if(node.right!=null) {
+                //node.left ==null &&node.right !=null
+                return false;
+            }
+
+            if(node.right!=null){
+                queue.offer(node.right);
+            }else{
+                leaf=true;
+            }
+
+
+        }
+        return false;
+    }
+    private Node<E> predecessor(Node<E> node){
+        if(node ==null) return null;
+        //前驅節點在左子樹
+        Node<E> p = node.left;
+        if(p!=null){
+
+            while (p.right!=null){
+                p = p.right;
+            }
+            return p;
+        }
+        //從祖父節點中尋找
+        while (node.parent!=null && node == node.parent.left){
+            node = node.parent;
+        }
+        //node.parent ==null
+        //node ==node.parent.right
+        return node.parent;
+    }
+    private Node<E> successor(Node<E> node){
+        if(node ==null) return null;
+        //前驅節點在左子樹
+        Node<E> p = node.right;
+        if(p!=null){
+
+            while (p.left!=null){
+                p = p.left;
+            }
+            return p;
+        }
+        //從祖父節點中尋找
+        while (node.parent!=null && node == node.parent.right){
+            node = node.parent;
+        }
+        //node.parent ==null
+        //node ==node.parent.left
+        return node.parent;
+    }
     /**
      *
      * @param e1
@@ -251,6 +420,12 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
             this.element =element;
             this.parent =parent;
 
+        }
+        public boolean isLeaf(){
+            return left ==null&& right ==null;
+        }
+        public boolean hasTwoChildren(){
+            return left !=null&& right !=null;
         }
     }
 

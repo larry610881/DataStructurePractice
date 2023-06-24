@@ -9,6 +9,8 @@
       <module fileurl="file://$PROJECT_DIR$/04-堆疊/04-堆疊.iml" filepath="$PROJECT_DIR$/04-堆疊/04-堆疊.iml" />
       <module fileurl="file://$PROJECT_DIR$/05-隊列/05-隊列.iml" filepath="$PROJECT_DIR$/05-隊列/05-隊列.iml" />
       <module fileurl="file://$PROJECT_DIR$/06-二叉搜索樹/06-二叉搜索樹.iml" filepath="$PROJECT_DIR$/06-二叉搜索樹/06-二叉搜索樹.iml" />
+      <module fileurl="file://$PROJECT_DIR$/06-二叉搜索樹2/06-二叉搜索樹2.iml" filepath="$PROJECT_DIR$/06-二叉搜索樹2/06-二叉搜索樹2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/07-AVL樹/07-AVL樹.iml" filepath="$PROJECT_DIR$/07-AVL樹/07-AVL樹.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/LoveDSA.iml" filepath="$PROJECT_DIR$/.idea/LoveDSA.iml" />
       <module fileurl="file://$PROJECT_DIR$/test/test.iml" filepath="$PROJECT_DIR$/test/test.iml" />
     </modules>

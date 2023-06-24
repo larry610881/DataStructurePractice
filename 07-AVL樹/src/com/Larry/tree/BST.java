@@ -57,6 +57,7 @@ public class BST<E>extends BinaryTree<E>  {
      * @param node 新添加的節點
      */
     protected void afterAdd(Node<E> node){  }
+    protected void afterRemove(Node<E> node){  }
     public void remove(E element){
         remove(node(element));
 
@@ -69,6 +70,7 @@ public class BST<E>extends BinaryTree<E>  {
          node.element = s.element;
          //刪除度為2實際上要移除內存的節點是前繼或後繼，因此將node指定為前繼或後繼即可
          node = s;
+
         }
         //只要刪除node就好 能到這node度必為1 or 0
         Node<E> replacement = node.left!=null? node.left :node.right;
@@ -93,7 +95,7 @@ public class BST<E>extends BinaryTree<E>  {
                 node.parent.right =null;
             }
         }
-
+        afterRemove(node);
     }
     private Node<E> node(E element){
         Node<E> node =root;

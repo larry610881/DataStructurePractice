@@ -5,12 +5,18 @@ package LinkedList;
  */
 public class _141_Linked_List_Cycle {
     public boolean hasCycle(ListNode head) {
-        ListNode slow = head;
-        ListNode fast = head.next;
-        while (slow!=null &&  fast !=null){
-            slow =slow.next;
-            fast = slow.next.next;
-            if(slow==fast) return  true;
+        if(head ==null || head.next==null) return false;
+        ListNode left =head;
+        ListNode right =head.next;
+        while (left !=null &&right !=null){
+            if(left ==right) return true;
+            left =left.next;
+            if(right.next !=null){
+                right =right.next.next;
+            }else{
+                return  false;
+            }
+
         }
         return  false;
     }

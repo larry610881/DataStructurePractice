@@ -57,7 +57,7 @@ public class BST<E>extends BinaryTree<E>  {
      * @param node 新添加的節點
      */
     protected void afterAdd(Node<E> node){  }
-    protected void afterRemove(Node<E> node){  }
+    protected void afterRemove(Node<E> node,Node<E> replacement){  }
     public void remove(E element){
         remove(node(element));
 
@@ -86,16 +86,19 @@ public class BST<E>extends BinaryTree<E>  {
             else {
                 node.parent.right =replacement;
             }
+            afterRemove(node,replacement);
         }else if(node.parent ==null){//node為葉子節點 且是跟節點
             root =null;
+            afterRemove(node,null);
         }else{
             if(node == node.parent.left){
                 node.parent.left =null;
             }else{
                 node.parent.right =null;
             }
+            afterRemove(node,null);
         }
-        afterRemove(node);
+
     }
     private Node<E> node(E element){
         Node<E> node =root;

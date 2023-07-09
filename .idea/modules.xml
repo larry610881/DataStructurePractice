@@ -14,6 +14,7 @@
       <module fileurl="file://$PROJECT_DIR$/08-紅黑樹/08-紅黑樹.iml" filepath="$PROJECT_DIR$/08-紅黑樹/08-紅黑樹.iml" />
       <module fileurl="file://$PROJECT_DIR$/09-集合/09-集合.iml" filepath="$PROJECT_DIR$/09-集合/09-集合.iml" />
       <module fileurl="file://$PROJECT_DIR$/10-映射/10-映射.iml" filepath="$PROJECT_DIR$/10-映射/10-映射.iml" />
+      <module fileurl="file://$PROJECT_DIR$/11-哈希表/11-哈希表.iml" filepath="$PROJECT_DIR$/11-哈希表/11-哈希表.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/LoveDSA.iml" filepath="$PROJECT_DIR$/.idea/LoveDSA.iml" />
       <module fileurl="file://$PROJECT_DIR$/test/test.iml" filepath="$PROJECT_DIR$/test/test.iml" />
     </modules>
